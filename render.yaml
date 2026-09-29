@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: code-review-agent
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: AI_API_URL
+        value: https://api.openai.com/v1
+      - key: AI_MODEL
+        value: gpt-4o-mini
+      - key: AI_API_KEY
+        sync: false

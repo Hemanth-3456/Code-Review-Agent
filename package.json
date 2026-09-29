@@ -1,0 +1,33 @@
+{
+  "name": "code-review-agent",
+  "version": "1.0.0",
+  "description": "Production-ready AI-powered Code Review Agent",
+  "private": true,
+  "main": "server/server.js",
+  "scripts": {
+    "postinstall": "npm --prefix client install",
+    "build": "npm --prefix client run build",
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "npm --prefix client run dev",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "code-review",
+    "ai",
+    "agent",
+    "react",
+    "express",
+    "render"
+  ],
+  "author": "Code Review Agent Team",
+  "license": "MIT"
+}
