@@ -25,6 +25,9 @@ The application is architected as a single deployable service: the Node.js/Expre
   - Category filters to easily inspect specific issue types.
   - One-click copy for improved code and review summaries with instant visual feedback.
   - Real-time API connectivity indicator.
+- **Zero-Setup & Out-of-the-Box Support**:
+  - **Works without any API key or LLM**: If no `AI_API_KEY` is provided, the application automatically activates its built-in static analysis & heuristic code reviewer to scan for bugs, security risks, performance flaws, and generate refactored code immediately.
+  - When an `AI_API_KEY` is provided, it seamlessly switches to the external LLM provider.
 - **Provider Agnostic AI Integration**:
   - Fully compatible with any OpenAI-compatible API (OpenAI, Groq, Together AI, DeepSeek, OpenRouter, Ollama).
   - Secure: AI API keys are strictly confined to the backend and never exposed to the client.

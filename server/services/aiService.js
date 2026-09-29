@@ -182,19 +182,19 @@ function validateReviewStructure(parsed) {
   };
 }
 
+const { generateStaticCodeReview } = require('./staticReviewService');
+
 /**
- * Main review function calling the AI provider
+ * Main review function calling the AI provider, or falling back to built-in analyzer if no key is configured
  */
 async function generateCodeReview({ code, language }) {
   const apiKey = process.env.AI_API_KEY;
   const apiUrl = (process.env.AI_API_URL || 'https://api.openai.com/v1').replace(/\/+$/, '');
   const model = process.env.AI_MODEL || 'gpt-4o-mini';
 
+  // If no API key is provided, use the built-in intelligent review engine (Zero API key needed)
   if (!apiKey || apiKey === 'your_api_key_here' || apiKey.trim() === '') {
-    const err = new Error('AI API key is not configured on the server. Please set the AI_API_KEY environment variable in your .env file or Render dashboard.');
-    err.statusCode = 503;
-    err.code = 'CONFIG_MISSING_API_KEY';
-    throw err;
+    return generateStaticCodeReview({ code, language });
   }
 
   const userPrompt = `Review the following ${language} code:\n\n\`\`\`${language.toLowerCase()}\n${code}\n\`\`\`\n\nAnalyze for bugs, security vulnerabilities, performance bottlenecks, code quality, edge cases, and best practices. Return strictly the required JSON object.`;
