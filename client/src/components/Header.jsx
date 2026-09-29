@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Terminal, ShieldCheck, Activity } from 'lucide-react';
+import { Terminal, ShieldCheck } from 'lucide-react';
 
 export default function Header() {
   const [apiOnline, setApiOnline] = useState(null);
